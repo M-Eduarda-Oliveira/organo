@@ -5,20 +5,23 @@ import Botao from "../Botao";
 import { useState } from "react";
 
 const Formulario = (props) => {
-
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
-  const [time, setTime] = useState("")
+  const [time, setTime] = useState("");
 
   const aoSalvar = (evento) => {
     evento.preventDefault();
     props.aoColaboradorCadastrado({
       nome: nome,
-      cargo: cargo, 
+      cargo: cargo,
       imagem: imagem,
-      time: time
-    })
+      time: time,
+    });
+    setNome("");
+    setCargo("");
+    setImagem("");
+    setTime("");
   };
 
   return (
@@ -30,28 +33,28 @@ const Formulario = (props) => {
           label="Nome"
           placeholder="Digite o seu nome"
           valor={nome}
-          aoAlterado={valor => setNome(valor)}
+          aoAlterado={(valor) => setNome(valor)}
         />
         <CampoTexto
           obrigatorio={true}
           label="Cargo"
           placeholder="Digite o seu cargo"
           valor={cargo}
-          aoAlterado={valor => setCargo(valor)}
+          aoAlterado={(valor) => setCargo(valor)}
         />
-        <CampoTexto 
-          label="Imagem" 
-          placeholder="Digite o endereço da imagem" 
+        <CampoTexto
+          label="Imagem"
+          placeholder="Digite o endereço da imagem"
           valor={imagem}
-          aoAlterado={valor => setImagem(valor)}
-          />
-        <ListaSupensa 
-          obrigatorio={true} 
-          label="Time" 
-          itens={props.times} 
+          aoAlterado={(valor) => setImagem(valor)}
+        />
+        <ListaSupensa
+          obrigatorio={true}
+          label="Time"
+          itens={props.times}
           valor={time}
-          aoAlterado={valor => setTime(valor)}
-          />
+          aoAlterado={(valor) => setTime(valor)}
+        />
         <Botao texto="Criar card" />
       </form>
     </section>
