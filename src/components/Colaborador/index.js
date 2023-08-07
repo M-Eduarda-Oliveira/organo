@@ -1,14 +1,16 @@
 import "./Colaborador.css";
 
-const Colaborador = () => {
+const Colaborador = ({nome, imagem, cargo}) => {
+  //Dessa forma desestruturamos o grande objeto que é o props. É justamente a substituição do props.
+  //Ajuda a utilizar somente a parte que nos interessa
   return (
     <div className="colaborador">
       <div className="cabecalho">
-        <img src="http://github.com/M-Eduarda-Oliveira.png" alt="Dudui"/>
+        <img src={imagem} alt={nome}/>
       </div>
       <div className="rodape">
-        <h4>Duda Oliveira</h4>
-        <h5>Estagigata</h5>
+        <h4>{nome}</h4>
+        <h5>{cargo}</h5>
       </div>
     </div>
   );
